@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+  <!-- Custom styles for this template -->
+  <link href="/static/css/room.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+  <div class="row header-row">
+    <div class="col-md-12">
+      <h2>sockeTD: Waiting Room</h2>
+      {% if user.user_id == game.creator %}
+        <button id="start-game" type="button" class="btn btn-primary">Start Game</button>
+        <button id="delete-game" type="button" class="btn btn-danger">Delete Game</button>
+      {% else %}
+        <button id="leave-game" type="button" class="btn btn-default">Leave Game</button>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <h4>Players</h4>
+      <table class="table table-striped">
+        <tbody id="player-list">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-8">
+      <h4>Chat</h4>
+      <div class="well well-sm well-chat" id="chat-well">
+        <p class="text-success">[{{ timestamp }}] Welcome! Your game will begin soon, please wait until all players have joined.</p>
+      </div>
+      <form class="chat-form" id="chat-form">
+        <div class="input-group">
+          <input type="text" class="form-control" id="chat-input" placeholder="Chat here...">
+          <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">Chat!</button>
+          </span>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/handlebars.js"></script>
+  <script src="/static/js/socket.io.js"></script>
+
+  {% include 'partials/handlebars_templates.html' %}
+
+  <script type="text/javascript">
+    var game_id = '{{ game.uuid }}'
+    var user_id = '{{ user.user_id }}'
+  </script>
+
+  <script src="/static/js/room.js"></script>
+
+{% endblock %}

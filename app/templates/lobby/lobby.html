@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+  <!-- Custom styles for this template -->
+  <link href="/static/css/lobby.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row header-row">
+    <div class="col-md-12">
+      <h2>sockeTD: Lobby</h2>
+      <button id="new-game" type="button" class="btn btn-primary">New Game</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">Your Games</div>
+      <table class="table table-striped table-bordered">
+          <thead>
+              <th>ID</th>
+              <th>Created</th>
+              <th>Players</th>
+              <th>Actions</th>
+          </thead>
+          <tbody id="games-owned">
+            <tr>
+                <td colspan="4" class="empty-table">
+                  <h4>You have not created any games</h4>
+                </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading">Others Games</div>
+      <table class="table table-striped table-bordered">
+          <thead>
+              <th>ID</th>
+              <th>Created</th>
+              <th>Players</th>
+              <th>Actions</th>
+          </thead>
+          <tbody id="games-unowned">
+            <tr>
+                <td colspan="4" class="empty-table">
+                  <h4>Noone else has created any games</h4>
+                </td>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_javascript %}
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script src="/static/js/handlebars.js"></script>
+  <script src="/static/js/socket.io.js"></script>
+
+  {% include 'partials/handlebars_templates.html' %}
+
+  <script type="text/javascript">
+    var user_id = "{{ user.user_id }}"
+  </script>
+
+  <script src="/static/js/lobby.js"></script>
+
+{% endblock %}

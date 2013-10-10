@@ -1,0 +1,63 @@
+{% raw %}
+
+  <script id="game-row-template-owned" type="text/x-handlebars-template">
+    {{#each owned}}
+    <tr>
+      <td>{{uuid}}</td>
+      <td>{{created_at}}</td>
+      <td>
+        {{#each players}}
+          <img src="{{avatar}}" alt="{{email}}" title="{{email}}" class="img-rounded player-avatar">
+        {{/each}}
+      </td>
+      <td>
+        <a href="{{room_url}}" class="btn btn-success">Join Game</a>
+        <button type="button" class="btn btn-danger delete-button" id="{{uuid}}">Delete Game</button>
+      </td>
+    </tr>
+    {{else}}
+    <tr>
+      <td colspan="4" class="empty-table">
+        <h4>You have not created any games</h4>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <script id="game-row-template-unowned" type="text/x-handlebars-template">
+    {{#each unowned}}
+    <tr>
+      <td>{{uuid}}</td>
+      <td>{{created_at}}</td>
+      <td>
+        {{#each players}}
+          <img src="{{avatar}}" alt="{{email}}" title="{{email}}" class="img-rounded player-avatar">
+        {{/each}}
+      </td>
+      <td>
+        <a href="{{room_url}}" class="btn btn-success">Join Game</a>
+      </td>
+    </tr>
+    {{else}}
+    <tr>
+      <td colspan="4" class="empty-table">
+        <h4>Noone else has created any games</h4>
+      </td>
+    </tr>
+    {{/each}}
+  </script>
+
+  <script id="message-template" type="text/x-handlebars-template">
+    <p class="text-success">[{{timestamp}}] {{name}}: {{message}}</p>
+  </script>
+
+  <script id="players-template" type="text/x-handlebars-template">
+    {{#each players}}
+      <tr id="user-{{user_id}}">
+        <td><img src="{{avatar}}" class="player-avatar"></td>
+        <td>{{name}}</td>
+      </tr>
+    {{/each}}
+  </script>
+
+{% endraw %}
