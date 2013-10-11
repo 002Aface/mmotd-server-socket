@@ -1,7 +1,7 @@
 sockeTD
 =======
 
-REST API/Websocket backend for the MMOTD project. Built using Flask, MongoDB and Redis. Initially we'll be deploying to dotcloud for simplicity's sake but
+REST API/Websocket backend for the MMOTD project. Built using Flask, MongoDB and Redis. Initially we'll be deploying to heroku for simplicity's sake but may migrate to another platform at a later stage if required.
 
 This is a collaborative experiment to build a massively* multiplayer tower defence game.  The goal here isn't to be ground breaking or earth shattering, but to have fun playing with some shiny APIs and building something just because we can.
 
